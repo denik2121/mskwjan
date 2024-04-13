@@ -11,32 +11,13 @@ void DrawMenu()
 {
     static ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
     {
-        Begin(OBFUSCATE("ZyCheats"));
-        ImGuiTabBarFlags tab_bar_flags = ImGuiTabBarFlags_FittingPolicyResizeDown;
-        if (BeginTabBar("Menu", tab_bar_flags)) {
-            if (BeginTabItem(OBFUSCATE("Account"))) {
-                // here menu stuff, remove test btw
-                // ImGui::Checkbox(OBFUSCATE("This is a checkbox"), &test);
-                if (Button(OBFUSCATE("Add Currency"))) {
-                    // code for button action
-                    addCurrency = true;
-                }
-                TextUnformatted(OBFUSCATE("Adds 1000 gems"));
-                if (Button(OBFUSCATE("Add Skins"))) {
-                    // code for button action
-                    addSkins = true;
-                }
-                Checkbox(OBFUSCATE("Everything unlocked"), &everythingUnlocked);
-                Checkbox(OBFUSCATE("Free Items"), &freeItems);
-                Checkbox(OBFUSCATE("Show Items"), &showAllItems);
-                EndTabItem();
-            }
-            EndTabBar();
-        }
-        Patches();
-        End();
+        ImGui::GetForegroundDrawList()->AddRect(ImVec2(100, 100), ImVec2(200, 200), IM_COL32(255, 0, 0, 255));
+
+    // Рисуем белый круг по середине экрана
+    ImVec2 screenCenter = ImGui::GetIO().DisplaySize * 0.5f;
+    float circleRadius = 50.0f;
+    ImGui::GetForegroundDrawList()->AddCircleFilled(screenCenter, circleRadius, IM_COL32(255, 255, 255, 255), 32);
     }
-}
 
 void SetupImgui() {
     IMGUI_CHECKVERSION();
